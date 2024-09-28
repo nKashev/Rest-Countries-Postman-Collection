@@ -32,7 +32,7 @@ jobs:
         --reporter-htmlextra-export newman/report.html
 
     - name: Upload HTML report as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: postman-html-report
         path: newman/report.html
