@@ -1,12 +1,12 @@
-name: Run Postman Collection
+name: Playwright Tests on Ubuntu
 
 on: 
-  push:
-    branches:
-      - main
-  pull_request:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
   schedule:
-    - cron: '0 16 * * *'  # Runs daily at midnight (UTC)
+    - cron: '40 15 * * *'
 
 jobs:
   postman-tests:
