@@ -1,10 +1,10 @@
 name: Run Postman Collection on Windows
 
 on: 
-  push:
-    branches:
-      - main
-  pull_request:
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
   schedule:
     - cron: '50 15 * * *'
 
