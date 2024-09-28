@@ -21,9 +21,10 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Install Newman
-      run: npm install -g newman@latest
+    - name: Install Dependencies
+      run: npm install
 
     - name: Run Postman collection
       run: |
         newman run postman/RestCountries.postman_collection.json
+        
