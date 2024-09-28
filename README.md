@@ -1,2 +1,4 @@
 # Rest-Countries-Postman-Collection
-This repo contains a Postman collection for testing the REST Countries API. A GitHub Action is set up to automatically run the collection using Newman on schedule. The workflow installs Node.js, Newman, and runs the collection to ensure API functionality.
+This repository contains a Postman collection, RestCountries.postman_collection.json, which is used to test the REST Countries API. The collection includes various API requests to retrieve country data, such as name, population, and region information, etc.
+
+Additionally, the repository is configured with a GitHub Action workflow to automate the testing of the API collection using Newman, the command-line tool for running Postman collections. The workflow ensures that tests are automatically executed via schedule.
