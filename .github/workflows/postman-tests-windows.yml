@@ -24,7 +24,9 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
+    - name: Force Fix Vulnerabilities
+      run: npm audit fix --force
+
     - name: Run Postman collection
       run: |
         newman run postman/RestCountries.postman_collection.json
-        
