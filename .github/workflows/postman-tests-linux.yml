@@ -9,15 +9,21 @@ on:
     - cron: '0 16 * * *'  # Runs daily at midnight (UTC)
 
 jobs:
-  automated-api-tests:
+  postman-tests:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Install Postman CLI
-        run: |
-          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-      - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-      - name: Run API tests
-        run: |
-          postman collection run postman/RestCountries.postman_collection.json
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Install Newman
+      run: npm install -g newman
+
+    - name: Run Postman collection
+      run: |
+        newman run postman/RestCountries.postman_collection.json
