@@ -1,0 +1,35 @@
+name: Run Postman Collection on Multiple OS
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: '55 15 * * *'
+
+jobs:
+  postman-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Fix Vulnerabilities
+      run: npm audit fix  # Automatically fix vulnerabilities
+
+    - name: Run Postman collection
+      run: |
+        newman run postman/RestCountries.postman_collection.json
