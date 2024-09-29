@@ -1,10 +1,10 @@
 name: Run Postman Collection on Multiple OS
 
 on: 
-  # push:
-  #   branches:
-  #     - main
-  # pull_request:
+  push:
+    branches:
+      - main
+  pull_request:
   schedule:
     - cron: '55 15 * * *'
 
@@ -25,9 +25,14 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Install Newman
-      run: npm install -g newman
+    - name: Install Newman and HTML reporter
+      run: npm install -g newman newman-reporter-htmlextra
 
-    - name: Run Postman collection
-      run: |
-        newman run postman/RestCountries.postman_collection.json
+    - name: Run Postman collection and generate HTML report
+      run: npx newman run postman/RestCountries.postman_collection.json --reporters htmlextra --reporter-htmlextra-export newman/report.html
+
+    - name: Upload HTML report as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: postman-html-report
+        path: newman/report.html
