@@ -26,7 +26,7 @@ jobs:
         node-version: '20'
 
     - name: Install Newman and HTML reporter
-      run: npm install -g newman newman-reporter-htmlextra
+      run: npm install -g newman@latest newman-reporter-htmlextra@latest
 
     - name: Run Postman collection and generate HTML report
       run: npx newman run postman/RestCountries.postman_collection.json --reporters htmlextra --reporter-htmlextra-export newman/report-${{ matrix.os }}.html
