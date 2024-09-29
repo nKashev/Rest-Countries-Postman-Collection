@@ -1,9 +1,9 @@
 name: Run Postman Collection on macOS
 
 on: 
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
   # pull_request:
   schedule:
     - cron: '45 15 * * *'
@@ -21,9 +21,18 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Install Newman
-      run: npm install -g newman
-
-    - name: Run Postman collection
+    - name: Install Newman and HTML reporter
       run: |
-        newman run postman/RestCountries.postman_collection.json
+        npm install -g newman newman-reporter-htmlextra
+
+    - name: Run Postman collection and generate HTML report
+      run: |
+        newman run postman/RestCountries.postman_collection.json \
+        --reporters htmlextra \
+        --reporter-htmlextra-export newman/report.html
+
+    - name: Upload HTML report as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: postman-html-report
+        path: newman/report.html
