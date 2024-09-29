@@ -1,10 +1,10 @@
 name: Run Postman Collection on Multiple OS
 
 on: 
-  push:
-    branches:
-      - main
-  pull_request:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
   schedule:
     - cron: '55 15 * * *'
 
