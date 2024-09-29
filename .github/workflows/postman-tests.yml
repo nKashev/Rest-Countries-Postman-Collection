@@ -28,6 +28,21 @@ jobs:
     - name: Install Newman and HTML reporter
       run: npm install -g newman@latest newman-reporter-htmlextra@latest
 
+    - name: Cleanup old reports (Ubuntu/macOS)
+      run: |
+        ls -t newman/*.html | tail -n +6 | xargs rm
+      shell: bash
+      if: runner.os != 'Windows'
+
+    - name: Cleanup old reports (Windows)
+      run: |
+        $reports = Get-ChildItem "newman\*.html" | Sort-Object LastWriteTime -Descending
+        if ($reports.Count -gt 5) {
+          $reports | Select-Object -Skip 5 | Remove-Item -Force
+        }
+      shell: powershell
+      if: runner.os == 'Windows'
+
     - name: Run Postman collection and generate HTML report
       run: npx newman run postman/RestCountries.postman_collection.json --reporters htmlextra --reporter-htmlextra-export newman/report-${{ matrix.os }}.html
 
