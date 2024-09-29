@@ -40,11 +40,15 @@ jobs:
 
     - name: Cleanup old reports (Windows)
       run: |
-        $reports = Get-ChildItem "newman\*.html" | Sort-Object LastWriteTime -Descending
-        if ($reports.Count -gt 5) {
-          $reports | Select-Object -Skip 5 | Remove-Item -Force  # Keep the latest 5 reports
+        if (Test-Path "newman") {
+          $reports = Get-ChildItem "newman\*.html" | Sort-Object LastWriteTime -Descending
+          if ($reports.Count -gt 5) {
+            $reports | Select-Object -Skip 5 | Remove-Item -Force  # Keep the latest 5 reports
+          } else {
+            Write-Host "No HTML reports to clean up."
+          }
         } else {
-          Write-Host "No HTML reports to clean up."
+          Write-Host "Directory 'newman' does not exist. Skipping cleanup."
         }
       shell: powershell
       if: runner.os == 'Windows'
