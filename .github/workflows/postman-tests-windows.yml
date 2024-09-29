@@ -29,12 +29,10 @@ jobs:
 
     - name: Run Postman collection and generate HTML report
       run: |
-        newman run postman/RestCountries.postman_collection.json \
-        --reporters htmlextra \
-        --reporter-htmlextra-export newman/report.html
+        newman run postman/RestCountries.postman_collection.json --reporters htmlextra --reporter-htmlextra-export newman/report.html
 
     - name: Upload HTML report as artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: postman-html-report
         path: newman/report.html
