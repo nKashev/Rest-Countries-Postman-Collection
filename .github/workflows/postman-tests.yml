@@ -1,6 +1,7 @@
 name: Run Postman Collection on Multiple OS
 
-on: 
+on:
+  workflow_dispatch:
   # push:
   #   branches:
   #     - main
