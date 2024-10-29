@@ -62,4 +62,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: postman-html-report-${{ matrix.os }}
-        path: newman/report-${{ matrix.os }}.htm
+        path: newman/report-${{ matrix.os }}.html
