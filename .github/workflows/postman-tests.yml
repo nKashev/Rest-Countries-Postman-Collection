@@ -6,8 +6,8 @@ on:
   #   branches:
   #     - main
   # pull_request:
-  schedule:
-    - cron: '55 15 * * *'
+  # schedule:
+  #   - cron: '55 15 * * *'
 
 jobs:
   postman-tests:
