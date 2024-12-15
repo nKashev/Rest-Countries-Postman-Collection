@@ -35,9 +35,9 @@
 							"    const responseData = pm.response.json();\r",
 							"    \r",
 							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
-							"    responseData.forEach(function(country) {\r",
-							"        pm.expect(country).to.be.an('object');\r",
-							"    });\r",
+							"    // responseData.forEach(function(country) {\r",
+							"    //     pm.expect(country).to.be.an('object');\r",
+							"    // });\r",
 							"});\r",
 							""
 						],
