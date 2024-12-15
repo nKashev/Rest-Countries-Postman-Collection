@@ -1,12 +1,13 @@
 name: Run Postman Collection on Ubuntu
 
 on: 
+  workflow_dispatch:
   # push:
   #   branches:
   #     - main
   # pull_request:
-  schedule:
-    - cron: '40 15 * * *'
+  # schedule:
+  #   - cron: '40 15 * * *'
 
 jobs:
   postman-tests:
