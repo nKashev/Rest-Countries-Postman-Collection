@@ -1,0 +1,1205 @@
+{
+	"info": {
+		"_postman_id": "308a87d0-a4d2-4eb8-84a0-f7308520de83",
+		"name": "RestCountries Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38660181"
+	},
+	"item": [
+		{
+			"name": "GetAll",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has countries\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							" \r",
+							"    pm.expect(responseData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 10000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(10000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"The response should be an array of objects\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+							"    // responseData.forEach(function(country) {\r",
+							"    //     pm.expect(country).to.be.an('object');\r",
+							"    // });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/all",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByIndependenceTrue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has countries\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							" \r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 10000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(10000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Independent property is true in the response\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country.independent).to.be.true;\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/independent?status=true",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"independent"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByIndependenceFalse",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 10000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(10000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Response has countries\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Independent property is true in the response\", function () {\r",
+							"//     const responseData = pm.response.json();\r",
+							"//     responseData.forEach(function(country) {\r",
+							"//         pm.expect(country.independent).to.be.false;\r",
+							"//     });\r",
+							"// });\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/independent?status=false&fields=name,independent",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"independent"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "false"
+						},
+						{
+							"key": "fields",
+							"value": "name,independent"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByIndependenceTrueSpecificFields",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has countries\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							" \r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 10000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(10000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Independent property is true in the response\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country.independent).to.be.true;\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/independent?status=true&fields=name,independent",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"independent"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "true"
+						},
+						{
+							"key": "fields",
+							"value": "name,independent"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has a country\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							" \r",
+							"   pm.expect(responseData).to.be.an('array').and.to.have.lengthOf(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/name/Bulgaria",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"name",
+						"Bulgaria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has countries\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							" \r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 5000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(5000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							"pm.test(\"Response body structure is valid\", function () {\r",
+							"    var responseJSON = pm.response.json();\r",
+							"    pm.expect(responseJSON).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has property cca2\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+							"    \r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country).to.have.property('cca2').that.is.a('string');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"cca2 property has the value 'RS' for Serbia\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country.cca2).to.equal('RS');\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/alpha/rs",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"alpha",
+						"rs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByListOfCodes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has countries\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							" \r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/alpha?codes=170,no,est,pe",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"alpha"
+					],
+					"query": [
+						{
+							"key": "codes",
+							"value": "170,no,est,pe"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByDemonym",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has countries\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							" \r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has property demonyms\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country).to.have.property('demonyms');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Demonyms for key 'fra', subkeys 'f' and 'm' are equal to 'Bulgare'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country).to.have.property('demonyms');\r",
+							"        const demonyms = country.demonyms;\r",
+							"        if (demonyms && demonyms.fra) {\r",
+							"            pm.expect(demonyms.fra.f).to.equal('Bulgare');\r",
+							"            pm.expect(demonyms.fra.m).to.equal('Bulgare');\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/demonym/bulgare?fields=name,demonyms",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"demonym",
+						"bulgare"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "name,demonyms"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByCurrency",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has country\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							" \r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has currencies property\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country).to.have.property('currencies');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Currencies property contains 'yen'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country).to.have.property('currencies');\r",
+							"        const currencies = country.currencies;\r",
+							"        if (currencies) {\r",
+							"            const currencyKeys = Object.keys(currencies);\r",
+							"            pm.expect(currencyKeys).to.include('JPY');\r",
+							"            pm.expect(currencies.JPY.name.toLowerCase()).to.include('yen');\r",
+							"        }\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/currency/yen?fields=name,currencies",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"currency",
+						"yen"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "name,currencies"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllByLanguage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has countries\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 10000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(10000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Validate the structure of the response\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+							"    \r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country).to.have.property('name').that.is.an('object');\r",
+							"        pm.expect(country).to.have.property('languages').that.is.an('object');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Name, official, and common fields are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(country => {\r",
+							"        pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Name should not be empty\");\r",
+							"        pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Official name should not be empty\");\r",
+							"        pm.expect(country.name.nativeName.spa.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Common native name should not be empty\");\r",
+							"        pm.expect(country.name.nativeName.spa.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Official native name should not be empty\");\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Languages is a non-empty object with at least one language\", function () {\r",
+							"  const responseData = pm.response.json();\r",
+							"  \r",
+							"  responseData.forEach(function(country) {\r",
+							"    pm.expect(country.languages).to.be.an('object').and.to.have.property('spa').that.is.an('string').and.to.have.lengthOf.at.least(1, \"Language should be spanish\");\r",
+							"  });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/lang/Spanish?fields=name,region,subregion,languages",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"lang",
+						"Spanish"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "name,region,subregion,languages"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByCapital",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has country\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							" \r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Country has the field capital\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country).to.have.property('capital');\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Capital field is equal to 'Tallinn'\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country.capital[0]).to.equal('Tallinn');\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/capital/tallinn?fields=name,capital",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"capital",
+						"tallinn"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "name,capital"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByRegion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has countries\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							" \r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate the response has name and region\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+							"    \r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country).to.have.property('name').that.is.an('object');\r",
+							"        pm.expect(country.name).to.have.property('common').that.is.a('string');\r",
+							"        pm.expect(country.name).to.have.property('official').that.is.a('string');\r",
+							"        pm.expect(country.name).to.have.property('nativeName').that.is.an('object');\r",
+							"        pm.expect(country).to.have.property('region').that.is.a('string');\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/region/europe?fields=name,region",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"region",
+						"europe"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "name,region"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBySubregion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has countries\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							" \r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 10000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(10000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate the response has name and subregion\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+							"    \r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country).to.have.property('name').that.is.an('object');\r",
+							"        pm.expect(country.name).to.have.property('common').that.is.a('string');\r",
+							"        pm.expect(country.name).to.have.property('official').that.is.a('string');\r",
+							"        pm.expect(country.name).to.have.property('nativeName').that.is.an('object');\r",
+							"        pm.expect(country).to.have.property('subregion').that.is.a('string');\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/subregion/southeast?fields=name,region,subregion",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"subregion",
+						"southeast"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "name,region,subregion"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByTranslation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has country\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							" \r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Name, official, and common are non-empty strings\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array');\r",
+							"    responseData.forEach(function(country) {\r",
+							"        if (country.name) {\r",
+							"            pm.expect(country.name.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            pm.expect(country.name.official).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            if (country.name.nativeName && country.name.nativeName.eng) {\r",
+							"                pm.expect(country.name.nativeName.eng.common).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+							"            }\r",
+							"        }\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains field translations\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country).to.have.property('translations');\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/translation/филипини?fields=name,translations",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"translation",
+						"филипини"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "name,translations"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByNameSpecificFields",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string OK\", function () {\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has a country\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData).to.be.an('array').and.to.have.lengthOf.at.least(1);\r",
+							"});\r",
+							"\r",
+							"// pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"//   pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"Validate the response has name, capital, region and population\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;\r",
+							"    \r",
+							"    responseData.forEach(function(country) {\r",
+							"        pm.expect(country).to.have.property('name').that.is.an('object');\r",
+							"        pm.expect(country.name).to.have.property('common').that.is.a('string');\r",
+							"        pm.expect(country.name).to.have.property('official').that.is.a('string');\r",
+							"        pm.expect(country.name).to.have.property('nativeName').that.is.an('object');\r",
+							"        pm.expect(country).to.have.property('capital').that.is.an('array');\r",
+							"        pm.expect(country).to.have.property('region').that.is.a('string');\r",
+							"        pm.expect(country).to.have.property('population').that.is.a('number');\r",
+							"    });\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restcountries.com/v3.1/name/Italy?fields=name,capital,region,population",
+					"protocol": "https",
+					"host": [
+						"restcountries",
+						"com"
+					],
+					"path": [
+						"v3.1",
+						"name",
+						"Italy"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "name,capital,region,population"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
