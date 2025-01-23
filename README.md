@@ -3,5 +3,8 @@ This repository contains a Postman collection, RestCountries.postman_collection.
 
 Additionally, the repository is configured with a GitHub Action workflow to automate the testing of the API collection using Newman, the command-line tool for running Postman collections. The workflow ensures that tests are automatically executed via schedule on multiple OS.
 
+The workflow was disabled on 23/01/2025 because of restcountries.com certificate expiration.
+
+
  [![Open Actions](https://img.shields.io/badge/Open-Actions-brightgreen?style=for-the-badge)](https://github.com/nKashev/Rest-Countries-Postman-Collection/actions)
  
