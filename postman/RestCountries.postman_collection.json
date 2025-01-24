@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "308a87d0-a4d2-4eb8-84a0-f7308520de83",
-		"name": "RestCountries Copy",
+		"name": "RestCountries",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "38660181"
 	},
