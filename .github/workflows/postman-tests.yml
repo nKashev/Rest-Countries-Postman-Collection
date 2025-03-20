@@ -6,9 +6,8 @@ on:
   #   branches:
   #     - main
   # pull_request:
-  schedule:
-  - cron: '30 23 * * 7'
-    timezone: 'Europe/Sofia'
+   schedule:
+    - cron: '30 21 * * *'
 
 jobs:
   postman-tests:
