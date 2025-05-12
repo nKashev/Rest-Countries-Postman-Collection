@@ -6,8 +6,10 @@ on:
   #   branches:
   #     - main
   # pull_request:
-   schedule:
-    - cron: '30 21 * * 7'
+  #   branches:
+  #     - main
+  schedule:
+    - cron: '59 21 * * 0'
 
 jobs:
   postman-tests:
