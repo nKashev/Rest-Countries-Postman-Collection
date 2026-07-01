@@ -50,14 +50,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/all",
+					"raw": "https://restcountries.com/v5/all",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"all"
 					]
 				}
@@ -121,14 +121,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/independent?status=true",
+					"raw": "https://restcountries.com/v5/independent?status=true",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"independent"
 					],
 					"query": [
@@ -198,14 +198,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/independent?status=false&fields=name,independent",
+					"raw": "https://restcountries.com/v5/independent?status=false&fields=name,independent",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"independent"
 					],
 					"query": [
@@ -279,14 +279,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/independent?status=true&fields=name,independent",
+					"raw": "https://restcountries.com/v5/independent?status=true&fields=name,independent",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"independent"
 					],
 					"query": [
@@ -353,14 +353,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/name/Bulgaria",
+					"raw": "https://restcountries.com/v5/name/Bulgaria",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"name",
 						"Bulgaria"
 					]
@@ -439,14 +439,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/alpha/rs",
+					"raw": "https://restcountries.com/v5/alpha/rs",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"alpha",
 						"rs"
 					]
@@ -504,14 +504,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/alpha?codes=170,no,est,pe",
+					"raw": "https://restcountries.com/v5/alpha?codes=170,no,est,pe",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"alpha"
 					],
 					"query": [
@@ -595,14 +595,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/demonym/bulgare?fields=name,demonyms",
+					"raw": "https://restcountries.com/v5/demonym/bulgare?fields=name,demonyms",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"demonym",
 						"bulgare"
 					],
@@ -688,14 +688,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/currency/yen?fields=name,currencies",
+					"raw": "https://restcountries.com/v5/currency/yen?fields=name,currencies",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"currency",
 						"yen"
 					],
@@ -775,14 +775,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/lang/Spanish?fields=name,region,subregion,languages",
+					"raw": "https://restcountries.com/v5/lang/Spanish?fields=name,region,subregion,languages",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"lang",
 						"Spanish"
 					],
@@ -862,14 +862,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/capital/tallinn?fields=name,capital",
+					"raw": "https://restcountries.com/v5/capital/tallinn?fields=name,capital",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"capital",
 						"tallinn"
 					],
@@ -946,14 +946,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/region/europe?fields=name,region",
+					"raw": "https://restcountries.com/v5/region/europe?fields=name,region",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"region",
 						"europe"
 					],
@@ -1031,14 +1031,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/subregion/southeast?fields=name,region,subregion",
+					"raw": "https://restcountries.com/v5/subregion/southeast?fields=name,region,subregion",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"subregion",
 						"southeast"
 					],
@@ -1108,14 +1108,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/translation/филипини?fields=name,translations",
+					"raw": "https://restcountries.com/v5/translation/филипини?fields=name,translations",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"translation",
 						"филипини"
 					],
@@ -1180,14 +1180,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://restcountries.com/v3.1/name/Italy?fields=name,capital,region,population",
+					"raw": "https://restcountries.com/v5/name/Italy?fields=name,capital,region,population",
 					"protocol": "https",
 					"host": [
 						"restcountries",
 						"com"
 					],
 					"path": [
-						"v3.1",
+						"v5",
 						"name",
 						"Italy"
 					],
